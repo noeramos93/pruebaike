@@ -2,6 +2,7 @@ package com.ike.school.demo.controller;
 
 import com.ike.school.demo.DemoApplication;
 import com.ike.school.demo.caseuse.CreateStudent;
+import com.ike.school.demo.caseuse.GetStudent;
 import com.ike.school.demo.entity.Student;
 import com.ike.school.demo.entity.Subject;
 import org.apache.juli.logging.Log;
@@ -11,14 +12,23 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/students")
 public class StudentRestController {
-    private CreateStudent createStudent;
     private Log LOGGER = LogFactory.getLog(DemoApplication.class);
+    private CreateStudent createStudent;
+    private GetStudent getStudent;
 
-    public StudentRestController(CreateStudent createStudent) {
+    public StudentRestController(CreateStudent createStudent,GetStudent getStudent) {
         this.createStudent = createStudent;
+        this.getStudent = getStudent;
+    }
+
+    @GetMapping("/")
+    List<Student> get(){
+        return getStudent.getAll();
     }
 
     @RequestMapping(path="/",method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces = "application/json")

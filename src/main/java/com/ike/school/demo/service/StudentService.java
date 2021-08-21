@@ -10,6 +10,8 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentService {
     private final Log LOG = LogFactory.getLog(StudentService.class);
@@ -25,5 +27,9 @@ public class StudentService {
     public Student save(Student newStudent){
         Student stu = studentRepository.save(newStudent);
         return stu;
+    }
+
+    public List<Student> getAllStudent(){
+        return studentRepository.findAll();
     }
 }
