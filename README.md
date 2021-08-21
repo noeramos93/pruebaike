@@ -19,6 +19,7 @@ y en el body se usa la siguiente estructura
 
 *para consumir el servicios de consulta de todos los estudiantes en un manejador de peticiones como postman 
 se utiliza la siguiente ruta con el metodo get
+
 localhost:8081//school/api/students/
 
 
